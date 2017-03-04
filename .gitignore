@@ -127,4 +127,8 @@ ENV/
 # Spyder project settings
 .spyderproject
 
+<<<<<<< HEAD
 
+=======
+# Rope project settings
+>>>>>>> c305d467b9e3edb6f5cfec31b1b1d657f1fe64fa

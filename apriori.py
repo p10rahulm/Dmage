@@ -78,7 +78,7 @@ def appendreturnfile(inputlist,outputfile):
             # print(element)
             if(type(element[0]) != frozenset):the_file.write(str(element[1])+":"+str(element[0])+'\n')
             else: the_file.write(str(element[1])+":"+";".join(map(str,[x for x in element[0]]))+'\n')
-    g = None
+
 
 
 if __name__ == "__main__":

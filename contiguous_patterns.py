@@ -44,7 +44,7 @@ def getpatternsforeachline(alltext):
     i = 0
     for line in alltext:
         listoflinesets.append(getpatternsgivenline(line))
-        print(i)
+        # print(i)
         i += 1
     return listoflinesets
 
@@ -71,7 +71,7 @@ def filterbywordlength(phrasefrequencydict,minlength):
 def printreturnfile(inputdict,outputfile):
     # inputlist.sort(key=lambda x: -x[1])
     inputlist = [(k,v) for k,v in inputdict.items()]
-    print(inputlist)
+    # print(inputlist)
     inputlist.sort(key=operator.itemgetter(1),reverse=True)
     with open(outputfile, 'w') as the_file:
         for element in inputlist:
@@ -80,7 +80,7 @@ def printreturnfile(inputdict,outputfile):
 
 if __name__ == "__main__":
     #testing time for reading
-    # times = time.time()
+    times = time.time()
     txtlines = readtext2("rawdata/yelp_reviews.txt")
     # print("timetaken by longer code = ",time.time() - times)
     # time taken by the list comprehension is 0.18secs
@@ -96,26 +96,27 @@ if __name__ == "__main__":
     # print("len of worddict is ", len(worddict))
 
 
-    worddict = getreducedwordlist(worddict,100)
+    # worddict = getreducedwordlist(worddict,100)
     # print("reduced worddict is ", worddict)
     # print("len of reduced worddict is ", len(worddict))
 
     # Test whether single line comprehension works
     # getpatternsgivenline(txtlines[0])
     # Get list of sets for each line
-    times = time.time()
+    # times = time.time()
     listoflinesets = getpatternsforeachline(txtlines)
-    print("Got list of line phrases in ", time.time() - times, "seconds")
+    # print("Got list of line phrases in ", time.time() - times, "seconds")
     # Get list of all phrases
-    times = time.time()
+    # times = time.time()
     phrasesfreq = getphrasefreq(listoflinesets)
+    print("number of all phrases checked:",len(phrasesfreq))
     frequentphrases = filterbyfrequency(phrasesfreq,100)
     # print(frequentphrases)
-    print(len(frequentphrases))
+    # print(len(frequentphrases))
 
     frequentphrases = filterbywordlength(frequentphrases, 2)
     # print(frequentphrases)
-    print(len(frequentphrases))
-    print("Got Worddict in ", time.time() - times, "seconds")
+    # print(len(frequentphrases))
+    print("Ran Algo for yelp in ", time.time() - times, "seconds")
 
     printreturnfile(frequentphrases, "output/yelpcontiguouspatterns.txt")

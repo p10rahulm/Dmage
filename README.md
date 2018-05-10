@@ -1,2 +1,2 @@
-# Dmage
-Apriori Algorithms DM
+# Analysis of Contiguous Categories in R
+Apriori Algorithm
